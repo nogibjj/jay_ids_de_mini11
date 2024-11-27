@@ -1,52 +1,64 @@
 [![CI](https://github.com/nogibjj/python-ruff-template/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/python-ruff-template/actions/workflows/cicd.yml)
 ## Template for Python projects with RUFF linter
 
-Data Pipeline with Databricks
-Overview
-This project focuses on building a Data Extraction and Transformation Pipeline to process tennis match data from the FiveThirtyEight datasets. The pipeline leverages Databricks, the Databricks API, and Python libraries for efficient data retrieval, transformation, and visualization.
+Databricks
+🏗️ Requirements
+Create a data pipeline using Databricks.
+Include at least one data source (US_birth.csv) and one data sink (Delta Lake).
+🛠️ Setup Instructions
+Cloning the Repository into Databricks
+Log into Databricks and navigate to the Workspaces section.
+Under the Users tab, locate your email ID and click on it.
+Click the Create button in the top-right corner and select Git Folder.
+Paste the GitHub repository URL:
+https://github.com/nogibjj/jay_ids_de_mini11 <br>
 
-Key Components
-1. Data Extraction
-Fetches tennis match data from specified URLs using the requests library.
-Stores the downloaded data in the Databricks FileStore for further processing.
-2. Databricks Environment Setup
-Establishes a secure connection to the Databricks environment.
-Utilizes environment variables (SERVER_HOSTNAME and ACCESS_TOKEN) for authentication.
-3. Data Transformation and Loading
-Converts the CSV data into a Spark DataFrame.
-Transforms the DataFrame into a Delta Lake table for efficient querying and stores it in the Databricks environment.
-4. Query Transformation and Visualization
-Executes predefined Spark SQL queries to perform data transformations.
-Creates visualizations from the transformed data using Spark DataFrames.
-5. File Path Checking
-Implements a utility function to verify the existence of file paths in the Databricks FileStore.
-As many functions are exclusive to Databricks, the GitHub environment is limited to API connection tests via the Databricks API and requests library.
-6. Automated Trigger with GitHub Push
-Configures the Databricks API to initiate a pipeline job when changes are pushed to this repository.
-Preparation Steps
-Create a Databricks workspace on Azure.
-Connect your GitHub account to the Databricks workspace.
-Set up a global init script to store environment variables during cluster initialization.
-Create a Databricks cluster with PySpark support.
-Clone this repository into your Databricks workspace.
-Define a Databricks job to execute the pipeline:
-Extract Task: mylib/extract.py
-Transform and Load Task: mylib/transform_load.py
-Query and Visualization Task: mylib/query_viz.py
-Automated Job Workflow
-Triggers automatically upon repository updates.
-Executes the full data pipeline in the Databricks environment.
-Development Instructions
-Check format and resolve errors:
-Open Codespaces or run the repository locally.
-Format code: make format
-Lint code: make lint
-Visualizations:
-Example outputs include viz1 and viz2.
-References
-Python Ruff Template
-Global Environment Variables in Databricks
-Databricks FileStore Documentation
-Delta Lake Overview
-Azure Databricks Data Engineer Path
-Getting Started with Databricks Data Pipelines
+Setting Up the Compute Cluster
+Navigate to the Compute section in Databricks.
+Click Create and select Personal Compute.
+Configure your cluster as shown in the image below:
+
+Installing Required Libraries in Your Compute Cluster
+Open your personal compute cluster and navigate to the Libraries tab.
+
+Add the following libraries via PyPI to ensure smooth project execution:
+
+pandas
+pytest
+python-dotenv
+Follow the Databricks prompts to install the libraries. <br>
+
+Installing libraries through PyPI:
+
+Linking Databricks to Your GitHub Account
+Navigate to Account Settings by clicking your profile icon in the top-right corner.
+Select Linked Accounts and integrate your GitHub account with Databricks using a Personal Access Token. <br>
+
+🚀 ETL Pipeline
+Setting Up the ETL Pipeline
+Navigate to the Workflows section in Databricks.
+Click Create Job.
+This project involves three stages of the ETL process, with separate tasks for Extract, Transform_Load, and Query.
+
+Task 1: Extract
+Start a new task named Extract.
+Set the type to Python Script.
+Set the source to Workspaces.
+Specify the path to the extract.py file within your repository.
+Assign the compute to your personal compute cluster.
+Click Create Task. <br>
+
+Task 2: Transform_Load
+Click Add Task and name it Transform_Load.
+Use the same configuration as Extract.
+Under Depends On, add the Extract task.
+Task 3: Query
+Click Add Task and name it Query.
+Use the same configuration as the previous tasks.
+Under Depends On, add the Transform_Load task.
+Final Pipeline
+The tasks are executed sequentially:
+Extract → Transform_Load → Query.
+The final pipeline should look like this:
+Running the Pipeline
+Once all tasks are set up, click the Run button to execute the pipeline.
