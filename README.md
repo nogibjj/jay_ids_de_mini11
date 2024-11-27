@@ -21,6 +21,11 @@ Configure your cluster as shown in the image below:
 Installing Required Libraries in Your Compute Cluster
 Open your personal compute cluster and navigate to the Libraries tab.
 
+Test locally
+<img width="1512" alt="Screenshot 2024-11-27 at 10 11 53 AM" src="https://github.com/user-attachments/assets/a4def9e8-e792-4dd8-a75c-63d5cc3c2553">
+test on databricks
+<img width="1512" alt="Screenshot 2024-11-27 at 10 12 03 AM" src="https://github.com/user-attachments/assets/5bc530b8-c0d2-4586-bf92-7d84f67c4d39">
+
 Add the following libraries via PyPI to ensure smooth project execution:
 
 pandas
