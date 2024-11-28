@@ -1,7 +1,7 @@
 [![CI](https://github.com/nogibjj/python-ruff-template/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/python-ruff-template/actions/workflows/cicd.yml)
 ## Template for Python projects with RUFF linter
 
-Databricks
+## Databricks
 🏗️ Requirements
 Create a data pipeline using Databricks.
 Include at least one data source (US_birth.csv) and one data sink (Delta Lake).
